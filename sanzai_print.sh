@@ -11,8 +11,6 @@ if [ ! -f $1 ]; then
     exit
 fi
 
-tabs 14
-
 sum=`cat $1 | tail -n +2 | cut -d , -f 3 | awk '{sum+=$1}END{print sum}'`
 echo 全散財額合計 `echo $sum  | sed -E 's/([0-9]{3})$/,\1 /g'`
 echo
@@ -55,4 +53,3 @@ for i in "${taxonomies[@]}"; do
     echo -e "`echo $i | sed -E 's/([0-9])([0-9]{3})( |$)/\1,\2/g'`"
 done
 
-tabs -0
